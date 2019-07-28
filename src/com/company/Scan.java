@@ -13,8 +13,8 @@ public class Scan {
 //        return scanner.nextInt();
 //    }
 
-    public static Scanner getScanner() {
-        return scanner;
+    public static int getScanner() {
+        return scanner.nextInt();
     }
 
     public static void setScanner(Scanner scanner) {

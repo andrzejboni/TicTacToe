@@ -15,53 +15,66 @@ public class Logika {
 
     public void rozgrywka() {
 
-        for (int w = 0; w < plansza.getWielkoscPlanszy(); w++) {
+        komunikat.przywitanie();
+        plansza.wyczyscPlansze();
 
-            if (w == plansza.getWielkoscPlanszy()) {    // Sprawdzam czy nie ma remisu, lub ktoś nie wygrał.
-                komunikat.remis();
-                break;
-            }
-            if (plansza.czyJestWygrany('X')) {
-                komunikat.przegrana('O');
-                komunikat.wygrana('X');
-                break;
-            }
-            if (plansza.czyJestWygrany('O')) {
-                komunikat.przegrana('X');
-                komunikat.wygrana('O');
-                break;
-            }
+        while (true) { // główna pętla
+            plansza.wypiszPlansze();
 
-            Scan.getScanner().nextInt();
 
             if (plansza.kolko) {
 
                 komunikat.podajWsporzedne();
-                plansza.setI(Scan.getScanner().nextInt());
-                plansza.setJ(Scan.getScanner().nextInt());
+                plansza.setI(Scan.getScanner());
+                plansza.setJ(Scan.getScanner());
 
-                if (plansza.czyMoznaPostawicZnak(plansza.getI(), plansza.getJ())) {
-                    plansza.setZnak(plansza.getI(), plansza.getJ(), plansza.znak1);
-                } else {
+                while (!plansza.czyMoznaPostawicZnak(plansza.getI(), plansza.getJ()))
+                {
                     komunikat.nieMoznaPostawicZNaku();
+                    komunikat.podajWsporzedne();
+                    plansza.setI(Scan.getScanner());
+                    plansza.setJ(Scan.getScanner());
                 }
+                
+                plansza.setZnak(plansza.getI(), plansza.getJ(), plansza.znak2);
+
             }
 
             if (plansza.krzyzyk) {
 
                 komunikat.podajWsporzedne();
-                plansza.setI(Scan.getScanner().nextInt());
-                plansza.setJ(Scan.getScanner().nextInt());
+                plansza.setI(Scan.getScanner());
+                plansza.setJ(Scan.getScanner());
 
-                if (plansza.czyMoznaPostawicZnak(plansza.getI(), plansza.getJ())) {
-                    plansza.setZnak(plansza.getI(), plansza.getJ(), plansza.znak2);
-                } else {
+                while (!plansza.czyMoznaPostawicZnak(plansza.getI(), plansza.getJ()))
+                {
                     komunikat.nieMoznaPostawicZNaku();
+                    komunikat.podajWsporzedne();
+                    plansza.setI(Scan.getScanner());
+                    plansza.setJ(Scan.getScanner());
                 }
+
+                plansza.setZnak(plansza.getI(), plansza.getJ(), plansza.znak2);
+
             }
 
 
-            plansza.wypiszPlansze();
+
+            if (plansza.getCounter() == plansza.getWielkoscPlanszy()) {    // Sprawdzam czy nie ma remisu, lub ktoś nie wygrał.
+                komunikat.remis();
+                plansza.wypiszPlansze();
+                break;
+            }
+            if (plansza.czyJestWygrany('X')) {
+                komunikat.wygrana('X');
+                plansza.wypiszPlansze();
+                break;
+            }
+            if (plansza.czyJestWygrany('O')) {
+                komunikat.wygrana('O');
+                plansza.wypiszPlansze();
+                break;
+            }
 
             if (plansza.isKrzyzyk()) {
                 plansza.setKrzyzyk(false);
@@ -71,7 +84,9 @@ public class Logika {
                 plansza.setKolko(false);
             }
 
+            plansza.setCounter(plansza.getCounter() + 1);
+
         }
     }
-
 }
+

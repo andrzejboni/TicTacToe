@@ -6,21 +6,16 @@ public class Gra {
 
     public static void start() {
         Plansza plansza = new Plansza(3, 3);
-
         Komunikat komunikat = new Komunikat();
         Scan scan = new Scan();
         Logika logika = new Logika(komunikat, plansza, scan);
 
-        komunikat.przywitanie();
+        plansza.setDlugosc(3);          // !!!!!! WAŻNE
+        plansza.setSzerokosc(3);        // !!!!!!
+        plansza.setWielkoscPlanszy(3,3);    // !!!!!
+
         logika.rozgrywka();
-        plansza.wyczyscPlansze();
 
-        plansza.wyczyscPlansze();
-        plansza.wypiszPlansze();
-
-//        CzyscPlansza czyscPlansza = new CzyscPlansza();
-//        czyscPlansza.wyczyscPlansze(plansza);
-//        czyscPlansza.wypiszPlansze(plansza);
 
     }
 

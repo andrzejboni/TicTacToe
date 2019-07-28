@@ -2,12 +2,16 @@ package com.company;
 
 public class Plansza {
 
-    public int dlugosc;
-    public int szerokosc;
-    public int wielkoscPlanszy = dlugosc * szerokosc;
+    private int dlugosc;
+    private int szerokosc;
+    private int wielkoscPlanszy ;
 
+    public void setWielkoscPlanszy(int dlugosc, int szerokosc) {
+        this.wielkoscPlanszy = szerokosc*dlugosc;
+    }
+
+    boolean krzyzyk = true;
     boolean kolko = false;
-    boolean krzyzyk = false;
 
     char znak1 = 'O';
     char znak2 = 'X';
@@ -15,6 +19,16 @@ public class Plansza {
     int i;
     int j;
 
+
+    int counter =0;
+
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
 
     public char plansza[][];
 
@@ -30,6 +44,14 @@ public class Plansza {
                 setZnak(i, j, ' ');
             }
         }
+    }
+
+    public void setDlugosc(int dlugosc) {
+        this.dlugosc = dlugosc;
+    }
+
+    public void setSzerokosc(int szerokosc) {
+        this.szerokosc = szerokosc;
     }
 
     public void wypiszPlansze() {
