@@ -1,14 +1,10 @@
 package com.company;
 
 public class Plansza {
-
     private int dlugosc;
     private int szerokosc;
-    private int wielkoscPlanszy ;
+    private int wielkoscPlanszy;
 
-    public void setWielkoscPlanszy(int dlugosc, int szerokosc) {
-        this.wielkoscPlanszy = szerokosc*dlugosc;
-    }
 
     boolean krzyzyk = true;
     boolean kolko = false;
@@ -20,7 +16,11 @@ public class Plansza {
     int j;
 
 
-    int counter =0;
+    int counter = 0;
+
+    public void setWielkoscPlanszy(int dlugosc, int szerokosc) {
+        this.wielkoscPlanszy = szerokosc * dlugosc;
+    }
 
     public int getCounter() {
         return counter;
@@ -67,78 +67,164 @@ public class Plansza {
 
 
     public boolean czyMoznaPostawicZnak(int i, int j) {
+        if (i > getSzerokosc() || j > getDlugosc()) {
+            return false;
+        }
         return getPlansza(i, j) == ' ';
     }
 
     public boolean czyJestWygrany(char znak) {
+        if (czyJestWygranyPionowo(znak) || czyJestWygranyPoziomo(znak)
+                || czyJestWygranyPrzekatneOdLewyGorny(znak) ||
+                czyJestWygranyPrzekatneOdPrawyGorny(znak)) {
+            return true;
+        }
+        return false;
+    }
+
+
+    public boolean czyJestWygranyPionowo(char znak) {
 
         for (int i = 0; i < getDlugosc(); i++) { // Sprwadzenie po kolumnach
-
             int licznik = 0;
             for (int j = 0; j < getSzerokosc(); j++) {
 
                 if (getPlansza(i, j) == znak) {
                     licznik++;
                 }
-
                 if (licznik == 3) {
                     return true;
                 }
             }
         }
+        return false;
+    }
 
-        for (int i = 0; i < getDlugosc(); i++) { // Sprwadzenie po wierszach
+    public boolean czyJestWygranyPoziomo(char znak) {
 
+
+        for (int i = 0; i < getSzerokosc(); i++) { // Sprwadzenie po wierszach
             int licznik = 0;
-            for (int j = 0; j < getSzerokosc(); j++) {
+
+            for (int j = 0; j < getDlugosc(); j++) {
 
                 if (getPlansza(j, i) == znak) {
                     licznik++;
                 }
-
                 return licznik == 3;
             }
         }
-
-        // Sprwadzenie po przekatnych od lewego gornego rogu
-        if (true) {
-            int licznik = 0;
-
-            if (getPlansza(0, 0) == znak) {
-                licznik++;
-            }
-
-            if (getPlansza(1, 1) == znak) {
-                licznik++;
-            }
-
-            if (getPlansza(2, 2) == znak) {
-                licznik++;
-            }
-
-            return licznik == 3;
-        }
-        // Sprwadzenie po przekatnych od prawego gornego rogu // i wiersz , j kolumna
-        if (true) {
-            int licznik = 0;
-
-            if (getPlansza(0, 2) == znak) {
-                licznik++;
-            }
-
-            if (getPlansza(1, 1) == znak) {
-                licznik++;
-            }
-
-            if (getPlansza(2, 0) == znak) {
-                licznik++;
-            }
-
-            return licznik == 3;
-        }
         return false;
+    }
+
+    public boolean czyJestWygranyPrzekatneOdLewyGorny(char znak) {
+        int licznik = 0;
+
+        if (getPlansza(0, 0) == znak) {
+            licznik++;
+        }
+
+        if (getPlansza(1, 1) == znak) {
+            licznik++;
+        }
+
+        if (getPlansza(2, 2) == znak) {
+            licznik++;
+        }
+
+        return licznik == 3;
+    }
+
+    public boolean czyJestWygranyPrzekatneOdPrawyGorny(char znak) {
+        int licznik = 0;
+
+
+        if (getPlansza(0, 2) == znak) {
+            licznik++;
+        }
+
+        if (getPlansza(1, 1) == znak) {
+            licznik++;
+        }
+
+        if (getPlansza(2, 0) == znak) {
+            licznik++;
+        }
+
+        return licznik == 3;
 
     }
+
+//
+//    public boolean czyJestWygrany(char znak) {
+//
+//        int licznik = 0;
+//
+//        for (int i = 0; i < getDlugosc(); i++) { // Sprwadzenie po kolumnach
+//            licznik = 0;
+//            for (int j = 0; j < getSzerokosc(); j++) {
+//
+//                if (getPlansza(i, j) == znak) {
+//                    licznik++;
+//                }
+//                if (licznik == 3) {
+//                    return true;
+//                }
+//            }
+//        }
+//
+//        for (int i = 0; i < getSzerokosc(); i++) { // Sprwadzenie po wierszach
+//            licznik = 0;
+//
+//            for (int j = 0; j < getDlugosc(); j++) {
+//
+//                if (getPlansza(j, i) == znak) {
+//                    licznik++;
+//                }
+//
+//                return licznik == 3;
+//            }
+//        }
+//
+//        // Sprwadzenie po przekatnych od lewego gornego rogu
+//        if (true) {
+//            licznik = 0;
+//
+//            if (getPlansza(0, 0) == znak) {
+//                licznik++;
+//            }
+//
+//            if (getPlansza(1, 1) == znak) {
+//                licznik++;
+//            }
+//
+//            if (getPlansza(2, 2) == znak) {
+//                licznik++;
+//            }
+//
+//            return licznik == 3;
+//        }
+//        // Sprwadzenie po przekatnych od prawego gornego rogu // i wiersz , j kolumna
+//        if (true) {
+//            licznik = 0;
+//
+//            if (getPlansza(0, 2) == znak) {
+//                licznik++;
+//            }
+//
+//            if (getPlansza(1, 1) == znak) {
+//                licznik++;
+//            }
+//
+//            if (getPlansza(2, 0) == znak) {
+//                licznik++;
+//            }
+//
+//            return licznik == 3;
+//        }
+//        return false;
+//
+//    }
 
 
     public int getI() {
@@ -174,24 +260,24 @@ public class Plansza {
     }
 
 
-    protected int getDlugosc() {
+    public int getDlugosc() {
         return dlugosc;
     }
 
-    protected int getWielkoscPlanszy() {
+    public int getWielkoscPlanszy() {
         return wielkoscPlanszy;
     }
 
-    protected int getSzerokosc() {
+    public int getSzerokosc() {
         return szerokosc;
     }
 
-    protected char getPlansza(int i, int j) {
+    public char getPlansza(int i, int j) {
         return plansza[i][j];
     }
 
 
-    protected void setZnak(int i, int j, char znak) {
+    public void setZnak(int i, int j, char znak) {
         plansza[i][j] = znak;
     }
 

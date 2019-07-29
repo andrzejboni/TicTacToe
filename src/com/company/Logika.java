@@ -36,7 +36,7 @@ public class Logika {
                     plansza.setJ(Scan.getScanner());
                 }
                 
-                plansza.setZnak(plansza.getI(), plansza.getJ(), plansza.znak2);
+                plansza.setZnak(plansza.getI(), plansza.getJ(), plansza.znak1);
 
             }
 
@@ -58,13 +58,9 @@ public class Logika {
 
             }
 
+            plansza.setCounter(plansza.getCounter() + 1);
 
 
-            if (plansza.getCounter() == plansza.getWielkoscPlanszy()) {    // Sprawdzam czy nie ma remisu, lub ktoś nie wygrał.
-                komunikat.remis();
-                plansza.wypiszPlansze();
-                break;
-            }
             if (plansza.czyJestWygrany('X')) {
                 komunikat.wygrana('X');
                 plansza.wypiszPlansze();
@@ -72,6 +68,11 @@ public class Logika {
             }
             if (plansza.czyJestWygrany('O')) {
                 komunikat.wygrana('O');
+                plansza.wypiszPlansze();
+                break;
+            }
+            if (plansza.getCounter() == plansza.getWielkoscPlanszy()) {    // Sprawdzam czy nie ma remisu, lub ktoś nie wygrał.
+                komunikat.remis();
                 plansza.wypiszPlansze();
                 break;
             }
@@ -84,7 +85,6 @@ public class Logika {
                 plansza.setKolko(false);
             }
 
-            plansza.setCounter(plansza.getCounter() + 1);
 
         }
     }

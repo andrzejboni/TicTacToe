@@ -9,18 +9,13 @@ public class Scan {
     public static Scanner scanner = new Scanner(System.in);
 
 
-//    public int scanner() {
-//        return scanner.nextInt();
-//    }
-
     public static int getScanner() {
         return scanner.nextInt();
     }
 
+
     public static void setScanner(Scanner scanner) {
         Scan.scanner = scanner;
     }
-//
-//    int a = scanner.nextInt();        // EXAMPLE
 
 }

@@ -10,12 +10,8 @@ public class Komunikat {
         System.out.println("\nPodaj współrzędne odzielone spacją: wiersz kolumna");
     }
 
-    public void przegrana(char znak) {
-        System.out.println("\nNiestety " + znak + ", przegrałeś, spróbuj jeszcze raz.");
-    }
-
     public void wygrana(char znak) {
-        System.out.println("Gratuluje " + znak + ",  wygrałeś!");
+        System.out.println("Gratuluje " + znak + ", wygrałeś!");
     }
 
     public void remis() {

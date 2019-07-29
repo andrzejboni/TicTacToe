@@ -12,15 +12,15 @@ public class Gra {
 
         plansza.setDlugosc(3);          // !!!!!! WAŻNE
         plansza.setSzerokosc(3);        // !!!!!!
-        plansza.setWielkoscPlanszy(3,3);    // !!!!!
-
+        plansza.setWielkoscPlanszy(3, 3);    // !!!!!
         logika.rozgrywka();
-
 
     }
 
-
     public static void main(String[] args) {
         start();
+
+
+        // sbkall
     }
 }
