@@ -22,15 +22,15 @@ public class Plansza {
         this.wielkoscPlanszy = szerokosc * dlugosc;
     }
 
-    public int getCounter() {
+    int getCounter() {
         return counter;
     }
 
-    public void setCounter(int counter) {
+    void setCounter(int counter) {
         this.counter = counter;
     }
 
-    public char plansza[][];
+    private char plansza[][];
 
     public Plansza(int dlugosc, int szerokosc) {
         this.dlugosc = dlugosc;
@@ -74,9 +74,13 @@ public class Plansza {
     }
 
     public boolean czyJestWygrany(char znak) {
+
+
+
         if (czyJestWygranyPionowo(znak) || czyJestWygranyPoziomo(znak)
                 || czyJestWygranyPrzekatneOdLewyGorny(znak) ||
                 czyJestWygranyPrzekatneOdPrawyGorny(znak)) {
+
             return true;
         }
         return false;
@@ -102,7 +106,6 @@ public class Plansza {
 
     public boolean czyJestWygranyPoziomo(char znak) {
 
-
         for (int i = 0; i < getSzerokosc(); i++) { // Sprwadzenie po wierszach
             int licznik = 0;
 
@@ -111,7 +114,9 @@ public class Plansza {
                 if (getPlansza(j, i) == znak) {
                     licznik++;
                 }
-                return licznik == 3;
+                if (licznik == 3) {
+                    return true;
+                }
             }
         }
         return false;

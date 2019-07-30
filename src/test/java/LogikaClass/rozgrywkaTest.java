@@ -7,7 +7,7 @@ import com.company.Scan;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import sun.rmi.runtime.Log;
+//import sun.rmi.runtime.Log;
 
 public class rozgrywkaTest {
     private Plansza plansza;
@@ -28,8 +28,8 @@ public class rozgrywkaTest {
         logika.rozgrywka();
     }
 
-    @Test
-    public void wyczyscPlanszeMethodTest() {
-        scan.
+//    @Test
+//    public void wyczyscPlanszeMethodTest() {
+//        scan.
 
 }
